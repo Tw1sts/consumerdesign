@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1920px" height="1080px" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="backgroundGradient">
+            <stop stop-color="#1a2a3a" offset="0%"></stop>
+            <stop stop-color="#2c3e50" offset="80%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="accentGradient">
+            <stop stop-color="#3498db" stop-opacity="0.05" offset="0%"></stop>
+            <stop stop-color="#3498db" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Background" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="url(#backgroundGradient)" x="0" y="0" width="1920" height="1080"></rect>
+        
+        <!-- Subtle geometric elements -->
+        <circle id="Circle1" fill="url(#accentGradient)" cx="1700" cy="300" r="500"></circle>
+        <path d="M0,1080 L1920,1080 L1920,880 C1600,930 1200,900 800,950 C400,1000 200,950 0,980 L0,1080 Z" id="Wave" fill="#1a2a3a" opacity="0.3"></path>
+        
+        <!-- Minimalist grid lines -->
+        <line x1="0" y1="540" x2="1920" y2="540" id="HorizontalLine" stroke="#ffffff" stroke-width="0.5" opacity="0.03"></line>
+        <line x1="960" y1="0" x2="960" y2="1080" id="VerticalLine" stroke="#ffffff" stroke-width="0.5" opacity="0.03"></line>
+    </g>
+</svg>

@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing for Regulated Markets | ConsumerDesign</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --light-text: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        /* Blog Header */
+        .blog-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            background-image: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .blog-header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .blog-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-size: 15px;
+            margin-top: 30px;
+        }
+        
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .blog-meta-item i {
+            color: var(--accent);
+        }
+        
+        /* Blog Content */
+        .blog-content-wrapper {
+            background-color: white;
+            padding: 60px 0;
+        }
+        
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .blog-main-content {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        
+        .blog-main-content p {
+            margin-bottom: 25px;
+        }
+        
+        .blog-main-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: var(--primary);
+        }
+        
+        .blog-main-content h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 30px 0 15px;
+            color: var(--primary);
+        }
+        
+        .blog-main-content ul,
+        .blog-main-content ol {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+        
+        .blog-main-content li {
+            margin-bottom: 10px;
+        }
+        
+        .blog-main-content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .blog-main-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .blog-main-content blockquote {
+            margin: 30px 0;
+            padding: 20px 30px;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+            color: var(--secondary);
+        }
+        
+        .blog-main-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-author {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-bio h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .author-bio p {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .author-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .author-social a {
+            color: var(--primary);
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .author-social a:hover {
+            color: var(--accent);
+        }
+        
+        /* Sidebar */
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-widget {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--primary);
+        }
+        
+        .recent-posts-list {
+            list-style: none;
+        }
+        
+        .recent-posts-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .recent-posts-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-posts-list a {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .recent-posts-list a:hover {
+            color: var(--accent);
+        }
+        
+        .recent-posts-list span {
+            display: block;
+            font-size: 14px;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 10px;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        
+        .categories-list a:hover {
+            color: var(--accent);
+        }
+        
+        .categories-list span {
+            background-color: #f8f9fa;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tags-cloud a {
+            display: inline-block;
+            background-color: #f8f9fa;
+            padding: 5px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .tags-cloud a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* Related Posts */
+        .related-posts {
+            margin-top: 60px;
+        }
+        
+        .related-posts h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .related-post-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .related-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .related-post-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .related-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .related-post-card:hover .related-post-image img {
+            transform: scale(1.1);
+        }
+        
+        .related-post-content {
+            padding: 20px;
+        }
+        
+        .related-post-date {
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .related-post-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .related-post-link {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .related-post-link:hover {
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-sidebar {
+                position: static;
+            }
+            
+            .blog-title {
+                font-size: 32px;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-social {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="../index.html" class="logo">Consumer<span>Design</span></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                    <li><a href="../index.html#blog">Blog</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="blog-header">
+        <div class="container blog-header-content">
+            <div class="blog-category">Product Design</div>
+            <h1 class="blog-title">Designing for Regulated Markets: Balancing Compliance and Creativity</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>February 25, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-user"></i>
+                    <span>Michael Twist</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-folder"></i>
+                    <span>Design Strategy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="blog-content-wrapper">
+        <div class="container blog-layout">
+            <div class="blog-main-content">
+                <p>
+                    Designing consumer products for regulated markets presents a unique set of challenges. Whether it's vaping products, pharmaceuticals, alcoholic beverages, or children's toys, navigating the complex landscape of regulations while maintaining brand identity and design appeal requires a delicate balance. In this article, I'll share insights from my experience as Head of Design at IVG Premium E-Liquids, where I've faced these challenges firsthand in one of the most heavily regulated consumer industries.
+                </p>
+                
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Product Design in Regulated Markets">
+                
+                <h2>Understanding the Regulatory Landscape</h2>
+                <p>
+                    The first step in successful design for regulated markets is developing a thorough understanding of the relevant regulations. These can vary dramatically between countries, states, and even local jurisdictions. For vaping products, this means keeping up with constantly evolving regulations from organizations like the FDA in the US, the MHRA in the UK, and the TPD in the European Union.
+                </p>
+                
+                <p>
+                    Key considerations typically include:
+                </p>
+                
+                <ul>
+                    <li><strong>Required warnings and information</strong> - Most regulated products require specific warning statements, ingredient lists, or other information to be displayed prominently.</li>
+                    <li><strong>Prohibition of certain imagery</strong> - Many regulations prohibit imagery that might appeal to children or make unsubstantiated claims.</li>
+                    <li><strong>Size and placement requirements</strong> - Warnings often have minimum size requirements, sometimes specified as a percentage of the packaging surface area.</li>
+                    <li><strong>Color and contrast specifications</strong> - To ensure readability, there may be requirements for contrast between text and background.</li>
+                </ul>
+                
+                <h2>Building Compliance into the Design Process</h2>
+                <p>
+                    Rather than viewing regulations as limitations to be addressed at the end of the design process, successful designers integrate compliance considerations from the very beginning. This means creating design systems and templates that have built-in space for required elements and developing checklists that ensure all requirements are met.
+                </p>
+                
+                <p>
+                    At IVG, we developed a proprietary design system that started with regulatory requirements as the foundation. By establishing a grid system that accommodated warning sizes and placements across different packaging formats, we could ensure compliance while still maintaining creative freedom within those parameters.
+                </p>
+                
+                <blockquote>
+                    "The true test of creativity isn't what you can do with unlimited freedom, but what you can accomplish within constraints."
+                </blockquote>
+                
+                <h2>Finding Creative Solutions Within Constraints</h2>
+                <p>
+                    The most innovative design solutions often emerge from working within constraints. When faced with stringent regulations, consider these approaches:
+                </p>
+                
+                <h3>1. Embrace the Warnings as Design Elements</h3>
+                <p>
+                    Rather than treating warnings as an afterthought, integrate them into your design from the beginning. For our IVG Bar product line, we created a cohesive warning system with consistent placement and styling that became part of the brand's visual language rather than detracting from it.
+                </p>
+                
+                <h3>2. Focus on Texture and Materials</h3>
+                <p>
+                    When imagery is restricted, tactile elements become even more important. Consider embossing, debossing, specialized finishes, or unique materials to create distinction and premium feel without relying on restricted visual elements.
+                </p>
+                
+                <h3>3. Develop Strong Structural Design</h3>
+                <p>
+                    The physical form of packaging or products can become a powerful brand asset when graphical elements are restricted. Our IVG 4in1 product utilized a distinctive structural design that communicated innovation through form rather than relying solely on graphics.
+                </p>
+                
+                <h3>4. Create Flexible Identity Systems</h3>
+                <p>
+                    Develop brand identity systems that retain their impact even when certain elements must be modified for different markets. This means establishing a visual hierarchy where the most important brand elements are least likely to conflict with regulatory requirements.
+                </p>
+                
+                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="3D Product Visualization">
+                
+                <h2>The Value of 3D Visualization in Regulatory Compliance</h2>
+                <p>
+                    One tool that has proven incredibly valuable in navigating regulatory challenges is 3D visualization. By creating detailed digital prototypes, we can:
+                </p>
+                
+                <ul>
+                    <li>Test different warning placements without producing physical samples</li>
+                    <li>Present concepts to regulatory affairs teams for early feedback</li>
+                    <li>Visualize products for different markets with tailored compliance elements</li>
+                    <li>Reduce the time and cost associated with physical prototyping</li>
+                </ul>
+                
+                <p>
+                    For the IVG Bar Crystal product line, we used 3D visualization to test multiple warning placement options across various transparent packaging solutions, ensuring compliance while maintaining the product's premium transparent aesthetic.
+                </p>
+                
+                <h2>Building Cross-Functional Collaboration</h2>
+                <p>
+                    Perhaps the most important element in successfully designing for regulated markets is establishing strong collaboration between design teams, legal advisors, and regulatory affairs specialists. At IVG, we implemented regular cross-functional reviews where designs were evaluated from multiple perspectives:
+                </p>
+                
+                <ul>
+                    <li><strong>Design perspective</strong> - Does it maintain brand identity and consumer appeal?</li>
+                    <li><strong>Regulatory perspective</strong> - Does it meet all applicable regulations across target markets?</li>
+                    <li><strong>Manufacturing perspective</strong> - Can it be produced efficiently at scale?</li>
+                    <li><strong>Marketing perspective</strong> - Does it effectively communicate key product benefits?</li>
+                </ul>
+                
+                <p>
+                    This collaborative approach ensures that compliance doesn't come at the expense of effectiveness, and that creative solutions are developed with a full understanding of regulatory requirements.
+                </p>
+                
+                <h2>Conclusion: Turning Constraints into Competitive Advantage</h2>
+                <p>
+                    The most successful brands in regulated markets don't just comply with regulations—they turn those constraints into a competitive advantage. By developing sophisticated design systems that incorporate regulatory requirements, these brands create distinctive, compliant products that stand out in the marketplace.
+                </p>
+                
+                <p>
+                    As regulations continue to evolve across industries, design teams that can navigate these complexities while maintaining brand integrity and consumer appeal will be increasingly valuable. The key lies in approaching regulation not as a barrier to creativity, but as a framework within which innovative thinking can flourish.
+                </p>
+                
+                <div class="blog-author">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Michael Twist">
+                    </div>
+                    <div class="author-bio">
+                        <h3>Michael Twist</h3>
+                        <p>Michael is an award-winning Product Concept Designer with extensive experience in brand strategy, 3D modeling, and leading design teams. Currently serving as Head of Design at IVG Premium E-Liquids, he specializes in creating innovative consumer products for regulated markets.</p>
+                        <div class="author-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="related-posts">
+                    <h2>Related Articles</h2>
+                    <div class="related-posts-grid">
+                        <div class="related-post-card">
+                            <div class="related-post-image">
+                                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="3D Visualization">
+                            </div>
+                            <div class="related-post-content">
+                                <div class="related-post-date">February 18, 2024</div>
+                                <h3 class="related-post-title">The Role of 3D Visualization in Modern Product Development</h3>
+                                <a href="3d-visualization.html" class="related-post-link">Read More →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="related-post-card">
+                            <div class="related-post-image">
+                                <img src="https://images.unsplash.com/photo-1613909671501-f9678ffc1d33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Sustainable Packaging">
+                            </div>
+                            <div class="related-post-content">
+                                <div class="related-post-date">February 10, 2024</div>
+                                <h3 class="related-post-title">Sustainable Packaging: Design Strategies That Reduce Environmental Impact</h3>
+                                <a href="sustainable-packaging.html" class="related-post-link">Read More →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="related-post-card">
+                            <div class="related-post-image">
+                                <img src="https://images.unsplash.com/photo-1589791622597-ebd2521b7b7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Design Innovation">
+                            </div>
+                            <div class="related-post-content">
+                                <div class="related-post-date">January 28, 2024</div>
+                                <h3 class="related-post-title">Innovation in Product Design: Creating Distinctive Consumer Experiences</h3>
+                                <a href="innovation-product-design.html" class="related-post-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Recent Posts</h3>
+                    <ul class="recent-posts-list">
+                        <li>
+                            <a href="regulated-markets.html">Designing for Regulated Markets: Balancing Compliance and Creativity</a>
+                            <span>February 25, 2024</span>
+                        </li>
+                        <li>
+                            <a href="3d-visualization.html">The Role of 3D Visualization in Modern Product Development</a>
+                            <span>February 18, 2024</span>
+                        </li>
+                        <li>
+                            <a href="sustainable-packaging.html">Sustainable Packaging: Design Strategies That Reduce Environmental Impact</a>
+                            <span>February 10, 2024</span>
+                        </li>
+                        <li>
+                            <a href="innovation-product-design.html">Innovation in Product Design: Creating Distinctive Consumer Experiences</a>
+                            <span>January 28, 2024</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Product Design <span>8</span></a></li>
+                        <li><a href="#">Design Strategy <span>5</span></a></li>
+                        <li><a href="#">3D Modeling <span>4</span></a></li>
+                        <li><a href="#">Packaging <span>6</span></a></li>
+                        <li><a href="#">Brand Identity <span>3</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+                    <div class="tags-cloud">
+                        <a href="#">Design</a>
+                        <a href="#">Product</a>
+                        <a href="#">Regulation</a>
+                        <a href="#">Compliance</a>
+                        <a href="#">Innovation</a>
+                        <a href="#">Creative</a>
+                        <a href="#">Strategy</a>
+                        <a href="#">Branding</a>
+                        <a href="#">3D</a>
+                        <a href="#">Visualization</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h2>Need Help With Your Product Design?</h2>
+            <p>Let's discuss how I can help you create exceptional product experiences that comply with regulations while standing out in the marketplace.</p>
+            <a href="/#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ConsumerDesign</h3>
+                    <p style="margin-bottom: 20px; color: rgba(255,255,255,0.7);">
+                        Transforming product concepts into exceptional consumer experiences through innovative design.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#services">Product Concept Design</a></li>
+                        <li><a href="../index.html#services">3D Modeling & Visualization</a></li>
+                        <li><a href="../index.html#services">Packaging Design</a></li>
+                        <li><a href="../index.html#services">Brand Identity</a></li>
+                        <li><a href="../index.html#services">Design Strategy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li><a href="../about/index.html">About</a></li>
+                        <li><a href="../index.html#blog">Blog</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px;"></i> Southport, North West, UK</li>
+                        <li><i class="fas fa-phone" style="color: var(--accent); margin-right: 10px;"></i> <a href="tel:07399015712">07399 015712</a></li>
+                        <li><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i> <a href="mailto:viscom.twist@gmail.com">viscom.twist@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ConsumerDesign by Michael Twist. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

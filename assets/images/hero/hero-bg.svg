@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1600px" height="800px" viewBox="0 0 1600 800" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="heroGradient">
+            <stop stop-color="#f5f5f5" offset="0%"></stop>
+            <stop stop-color="#e0e0e0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Hero-Background" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="url(#heroGradient)" x="0" y="0" width="1600" height="800"></rect>
+        <path d="M0,800 L1600,800 L1600,600 C1300,700 1000,650 700,750 C400,850 200,700 0,750 L0,800 Z" id="Wave" fill="#ffffff" opacity="0.8"></path>
+        <circle id="Circle1" fill="#3498db" opacity="0.1" cx="200" cy="200" r="80"></circle>
+        <circle id="Circle2" fill="#3498db" opacity="0.1" cx="1400" cy="400" r="120"></circle>
+        <circle id="Circle3" fill="#2c3e50" opacity="0.05" cx="800" cy="150" r="150"></circle>
+        <circle id="Circle4" fill="#2c3e50" opacity="0.05" cx="500" cy="600" r="100"></circle>
+        <circle id="Circle5" fill="#3498db" opacity="0.1" cx="1200" cy="700" r="60"></circle>
+    </g>
+</svg>
